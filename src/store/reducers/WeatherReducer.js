@@ -8,8 +8,9 @@ import {
 } from "../constants";
 
 const INITIAL_STATE = {
-  currentWeatherData: [],
-  forecastData: [],
+  city: "",
+  currentWeatherData: null,
+  forecastData: null,
   isLoading: false,
   error: null,
 };
@@ -20,6 +21,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: true,
+        city: action.payload.city,
         error: null,
       };
 
@@ -35,12 +37,15 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         isLoading: false,
         error: action.error,
+				city: "",
+				currentWeatherData: null,
       };
 
     case FORECAST_5_DAYS_LOAD:
       return {
         ...state,
         isLoading: true,
+        city: action.payload.city,
         error: null,
       };
 
@@ -55,7 +60,9 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.error,
+        city: "",
+        error: action.error,
+				forecastData: null,
       };
 
     default:

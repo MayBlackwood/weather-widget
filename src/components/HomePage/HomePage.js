@@ -7,7 +7,7 @@ import WeatherCard from "../WeatherCard";
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 2px solid purple;
+  // border: 2px solid purple;
   border-radius: 2px;
   width: 60%;
   height: auto;

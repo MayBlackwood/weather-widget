@@ -13,6 +13,9 @@ export const getCurrentWeather = (city) => async (dispatch) => {
   try {
     dispatch({
       type: CURRENT_WEATHER_LOAD,
+      payload: {
+        city,
+      },
     });
 
     const { data } = await loadCurrentWeather(city);
@@ -38,6 +41,9 @@ export const get5DaysForecast = (city) => async (dispatch) => {
   try {
     dispatch({
       type: FORECAST_5_DAYS_LOAD,
+      payload: {
+        city,
+      },
     });
 
     const { data } = await load5DaysForecast(city);
@@ -51,7 +57,7 @@ export const get5DaysForecast = (city) => async (dispatch) => {
       },
     });
   } catch (error) {
-    console.log(error);
+    console.log(error.code);
     dispatch({
       type: FORECAST_5_DAYS_FAIL,
       error,

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import LoaderGif from "../../assets/images/Loader.gif";
 
 const Image = styled.img`
-  height: 100%;
+  height: 150px;
 `;
 
 const Loader = () => <Image src={LoaderGif} alt="Loading" />;
