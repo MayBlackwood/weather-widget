@@ -1,43 +1,55 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
   getCurrentWeather,
   get5DaysForecast,
 } from "../../store/actions/WeatherActions";
 
-const SearchContainer = styled.div`
+const SearchContainer = styled.form`
   display: flex;
-  justify-content: space-around;
-  padding: 20px 40px;
+  justify-content: space-between;
+  padding: 20px 0;
   margin: 10px auto;
-  width: 80%;
+  width: 100%;
 `;
 
 const Button = styled.button`
   display: inline-block;
-  color: palevioletred;
+  color: #fa5a54;
   font-size: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
+  border: 2px solid #fa7a54;
+  border-radius: 10px;
   display: block;
-  height: 40px;
+  height: 50px;
   min-width: 100px;
+  outline-style: none;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const Input = styled.input`
   padding: 0.5em;
-  color: ${(props) => props.inputColor || "palevioletred"};
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
-  width: 50%;
+  color: #fa5a54;
+  font-size: 1em;
+  border: 2px solid gray;
+  border-radius: 10px;
+  background: whitesmoke;
+  width: 600px;
   height: 30px;
+  outline-style: none;
+  @media (max-width: 1279px) {
+    width: 300px;
+  }
+  @media (max-width: 767px) {
+    width: 150px;
+  }
 `;
 
 const SearchBox = () => {
-  const [city, setCityValue] = useState("Seattle");
+  const [city, setCityValue] = useState("");
 
   const dispatch = useDispatch();
 
@@ -45,13 +57,18 @@ const SearchBox = () => {
     setCityValue(value);
   };
 
-  const handleSearchClick = () => {
+  const handleSearchClick = (e) => {
+    e.preventDefault();
     dispatch(getCurrentWeather(city));
     dispatch(get5DaysForecast(city));
   };
 
   return (
-    <SearchContainer>
+    <SearchContainer
+      onSubmit={(e) => {
+        handleSearchClick(e);
+      }}
+    >
       <Input
         name="search"
         type="text"
@@ -59,7 +76,7 @@ const SearchBox = () => {
         value={city}
         onChange={handleInputChange}
       />
-      <Button onClick={handleSearchClick}>Search</Button>
+      <Button type="submit">Search</Button>
     </SearchContainer>
   );
 };

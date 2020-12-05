@@ -7,11 +7,19 @@ import WeatherCard from "../WeatherCard";
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  // border: 2px solid purple;
+  justify-content: center;
+  align-items: center;
   border-radius: 2px;
-  width: 60%;
+  width: 800px;
   height: auto;
   margin: 100px auto;
+  @media (max-width: 1279px) {
+    width: 500px;
+    margin: 80px auto;
+  }
+  @media (max-width: 767px) {
+    width: 300px;
+  }
 `;
 
 const HomePage = () => (

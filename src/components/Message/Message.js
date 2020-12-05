@@ -5,9 +5,15 @@ const MessageContainer = styled.div`
   display: flex;
 `;
 
-const Message = ({ text = "" }) => (
+const Text = styled.p`
+  color: ${(props) => {
+    return props.color || "#000000";
+  }};
+`;
+
+const Message = ({ text = "", color }) => (
   <MessageContainer>
-    <div>{text}</div>
+    <Text color={color}>{text}</Text>
   </MessageContainer>
 );
 

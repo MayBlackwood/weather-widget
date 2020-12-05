@@ -1,2 +1,1 @@
-export const currentWeatherApi = "/data/2.5/weather";
-export const apiKey = "3caeee7ff6d30aa55eb47372504bdafc";
+export const ICON_URL = "http://openweathermap.org/img/wn";

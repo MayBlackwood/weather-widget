@@ -10,12 +10,23 @@ const WeatherCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 760px;
   align-items: center;
   min-height: 160px;
   padding: 20px;
   margin: 20px 0;
   border: 4px solid rgb(121, 138, 151);
   border-radius: 10px;
+  @media (max-width: 1279px) {
+    width: 450px;
+  }
+  @media (max-width: 767px) {
+    width: 250px;
+  }
+`;
+
+const Title = styled.p`
+  font-weight: bold;
 `;
 
 const WeatherCard = () => {
@@ -27,19 +38,22 @@ const WeatherCard = () => {
     city,
   } = useSelector((store) => store.weather);
 
+  const { name } = currentWeatherData;
+
   return (
     <WeatherCardContainer>
       {!isLoading &&
-        !!error &&
-        error.message !== "Request failed with status code 404" && (
-          <Message text={error.message} />
+        !!error
+       && (
+          <Message text={error.message} color={"#FC4B3A"} />
         )}
-      {!isLoading && !city && <Message text={"City Not Found"} />}
+      {!isLoading && !city && !error && <Message text={"City Not Found"} />}
       {isLoading && !error && <Loader />}
       {!isLoading && !error && !!city && (
         <>
-          <CurrentWeatherSection />
-          <ForecastSection />
+          <Title>{name}</Title>
+          <CurrentWeatherSection data={currentWeatherData} />
+          <ForecastSection data={forecastData} /> {/* {} */}
         </>
       )}
     </WeatherCardContainer>

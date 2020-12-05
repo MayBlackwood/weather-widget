@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LogoImage from "../../assets/images/logo.png";
+import LogoImage from "../../assets/images/OpenWeatherLogo.png";
 
 const HeaderImage = styled.div`
   background-image: url(${LogoImage});
@@ -18,7 +18,6 @@ const HeaderContainer = styled.div`
   width: 100%;
   height: 150px;
   justify-content: center;
-  background: pink;
   align-items: center;
 `;
 

@@ -1,14 +1,6 @@
-import axios from "axios";
+export const API_KEY = "3caeee7ff6d30aa55eb47372504bdafc";
 
-const API_KEY = "567fb009055f8d8fddf69948130c088f";
-
-export default {
-    fetchCurrentWeather: ({ query }) =>
-        axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${API_KEY}`
-        ),
-    fetchWeatherForecast: ({ lat, lon }) =>
-        axios.get(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=hourly,current&appid=${API_KEY}`
-        ),
-};
+export const CURRENT_WEATHER_API =
+  "http://api.openweathermap.org/data/2.5/weather";
+export const WEATHER_FORECAST_API =
+  "http://api.openweathermap.org/data/2.5/forecast";

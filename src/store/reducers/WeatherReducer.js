@@ -9,8 +9,8 @@ import {
 
 const INITIAL_STATE = {
   city: "",
-  currentWeatherData: null,
-  forecastData: null,
+  currentWeatherData: {},
+  forecastData: {},
   isLoading: false,
   error: null,
 };
@@ -21,7 +21,6 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: true,
-        city: action.payload.city,
         error: null,
       };
 
@@ -30,6 +29,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         currentWeatherData: action.payload.currentWeatherData,
         isLoading: false,
+        city: action.payload.city,
       };
 
     case CURRENT_WEATHER_FAIL:
@@ -38,14 +38,13 @@ export default (state = INITIAL_STATE, action) => {
         isLoading: false,
         error: action.error,
 				city: "",
-				currentWeatherData: null,
+				currentWeatherData: {},
       };
 
     case FORECAST_5_DAYS_LOAD:
       return {
         ...state,
         isLoading: true,
-        city: action.payload.city,
         error: null,
       };
 
@@ -53,6 +52,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         forecastData: action.payload.forecastData,
+        city: action.payload.city,
         isLoading: false,
       };
 
@@ -62,7 +62,7 @@ export default (state = INITIAL_STATE, action) => {
         isLoading: false,
         city: "",
         error: action.error,
-				forecastData: null,
+				forecastData: {},
       };
 
     default:

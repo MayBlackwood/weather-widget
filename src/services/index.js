@@ -1,23 +1,29 @@
 import axios from "axios";
-import { currentWeatherApi, apiKey } from "../constants";
+import {
+  CURRENT_WEATHER_API,
+  WEATHER_FORECAST_API,
+  API_KEY,
+} from "../api";
 
 export const loadCurrentWeather = (city) =>
   axios({
     method: "GET",
-    url: `http://api.openweathermap.org/data/2.5/weather`,
-    // url: `http://${currentWeatherApi}`,
+    url: CURRENT_WEATHER_API,
     params: {
       q: city,
-      appid: apiKey,
+      appid: API_KEY,
+      units: "metric",
     },
   });
 
 export const load5DaysForecast = (city) =>
   axios({
     method: "GET",
-    url: `http://api.openweathermap.org/data/2.5/forecast`,
+    url: WEATHER_FORECAST_API,
     params: {
       q: city,
-      appid: apiKey,
+      appid: API_KEY,
+      units: "metric",
+      cnt: 40,
     },
   });
