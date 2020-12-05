@@ -1,25 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-import LogoImage from "../../assets/images/OpenWeatherLogo.png";
 
-const HeaderImage = styled.div`
-  background-image: url(${LogoImage});
-  outline: none;
-  height: auto;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 150px;
-  justify-content: center;
-  align-items: center;
-`;
+import { HeaderContainer, HeaderImage } from "./styled";
 
 const Header = () => (
   <HeaderContainer>
